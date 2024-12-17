@@ -28,17 +28,17 @@ public class PessoaControler {
     public ResponseEntity<PessoaModel> criaNovaPessoa(@RequestBody @Valid PessoaDTO novaPessoa){
         //novaPessoa.setId(null);
         PessoaModel pessoa =  new PessoaModel();
-        pessoa.setNome(novaPessoa.getNome());
-        pessoa.setDescription(novaPessoa.getDescription());
-        pessoa.setSenha(novaPessoa.getSenha());
+        pessoa.setNome(novaPessoa.nome());
+        pessoa.setDescription(novaPessoa.description());
+        pessoa.setSenha(novaPessoa.senha());
         return new ResponseEntity<>(pessoaService.criaNovaPessoa(pessoa), HttpStatus.CREATED);
     }
     @PutMapping("/{id}")
     public ResponseEntity<PessoaModel> editaPessoa(@PathVariable Integer id,@RequestBody @Valid PessoaDTO novaPessoa){
         PessoaModel pessoa = pessoaService.editaPessoa(id);
-        pessoa.setNome(novaPessoa.getNome());
-        pessoa.setDescription(novaPessoa.getDescription());
-        pessoa.setSenha(novaPessoa.getSenha());
+        pessoa.setNome(novaPessoa.nome());
+        pessoa.setDescription(novaPessoa.description());
+        pessoa.setSenha(novaPessoa.senha());
 
         return new ResponseEntity<>(pessoaService.criaNovaPessoa(pessoa), HttpStatus.OK);
     }
